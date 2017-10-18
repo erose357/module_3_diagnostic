@@ -1,6 +1,7 @@
+<h1>10 Nearest Fuel Stations</h1>
 <ul>
 <% @stations.each do |station| %>
-  <h3 class="station name">Name: <%= station.name %></h3>
+  <h3 class="station name"><%= station.name %></h3>
   <li class="address">Address: <%= station.address %></li>
   <li class="fuel_types">Fuel Types: <%= station.fuel_types %></li>
   <li class="distance">Distance: <%= station.distance %></li>
