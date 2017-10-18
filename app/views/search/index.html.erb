@@ -1,6 +1,10 @@
 <ul>
 <% @stations.each do |station| %>
-  <h3 class="station"><%= station.name %></h3>
+  <h3 class="station name">Name: <%= station.name %></h3>
+  <li class="address">Address: <%= station.address %></li>
+  <li class="fuel_types">Fuel Types: <%= station.fuel_types %></li>
+  <li class="distance">Distance: <%= station.distance %></li>
+  <li class="access_times">Access Times: <%= station.access_times %></li>
 <% end %>
 </ul>
   

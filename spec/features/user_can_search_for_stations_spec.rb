@@ -16,7 +16,7 @@ RSpec.feature "User can search" do
       expect(page).to have_css('h3.station', count: 10)
   #And the stations should be limited to Electric and Propane
   #And for each of the stations I should see Name, Address, Fuel Types, Distance, and Access Times
-      expect(page).to have_css('li.name', count: 10)
+      expect(page).to have_css('h3.name', count: 10)
       expect(page).to have_css('li.address', count: 10)
       expect(page).to have_css('li.fuel_types', count: 10)
       expect(page).to have_css('li.distance', count: 10)

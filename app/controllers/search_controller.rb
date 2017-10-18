@@ -5,7 +5,7 @@ class SearchController < ApplicationController
       #faraday.adapter Faraday.default_adapter
     #end
     
-    response = Faraday.get("https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['nrel_api_key']}&fuel_type=ELEC,LPG&location=80203")
+    response = Faraday.get("https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['nrel_api_key']}&fuel_type=ELEC,LPG&location=80203&limit=10")
     
     raw_stations = JSON.parse(response.body, symbolize_names: true)[:fuel_stations]
 
@@ -18,7 +18,7 @@ class SearchController < ApplicationController
 end
 
 class Station
-  attr_reader :name, :street_address, :state, :zip, :fuel_types, :distance, :access_times
+  attr_reader :name, :fuel_types, :distance, :access_times
   
   def initialize(attrs)
     @name = attrs[:station_name]
@@ -28,5 +28,9 @@ class Station
     @fuel_types = attrs[:fuel_type_code]
     @distance = attrs[:distance]
     @access_times = attrs[:access_days_time]
+  end
+
+  def address
+    "#{@street_address}, #{@state} #{@zip}"
   end
 end
